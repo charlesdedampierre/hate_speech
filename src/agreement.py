@@ -33,7 +33,7 @@ def plot_table(df_percent_agreement, hate_type, overall_mean):
     )
     ax.text(0, -0.1, overall_mean, transform=ax.transAxes, fontsize=12, ha="center")
 
-    return fig
+    return ax
 
 
 def get_kappa_matrix(coders: t.List[int], labels=t.List[str]):
