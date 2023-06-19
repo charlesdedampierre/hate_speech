@@ -32,9 +32,13 @@ if __name__ == "__main__":
         )
         df_bet = df_bet.astype(int)
 
-        coder1 = list(df_bet["Benjamin"])
-        coder2 = list(df_bet["Charles"])
-        coder3 = list(df_bet["Florian"])
+        CODER_1 = os.getenv("CODER_1")
+        CODER_2 = os.getenv("CODER_2")
+        CODER_3 = os.getenv("CODER_3")
+
+        coder1 = list(df_bet[CODER_1])
+        coder2 = list(df_bet[CODER_2])
+        coder3 = list(df_bet[CODER_3])
 
         coders = [coder1, coder2, coder3]
         # labels = ["Benjamin", "Charles", "Florian"]

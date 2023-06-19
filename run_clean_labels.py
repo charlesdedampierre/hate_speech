@@ -25,5 +25,8 @@ if __name__ == "__main__":
     df["global hate"] = df[hate_types].max(axis=1)
     df = df.replace("#", 0)
     # get the one that are done with the task
-    df = df[df["annotateur"].isin(["Florian", "Charles", "Benjamin"])]
+    CODER_1 = os.getenv("CODER_1")
+    CODER_2 = os.getenv("CODER_2")
+    CODER_3 = os.getenv("CODER_3")
+    df = df[df["annotateur"].isin([CODER_1, CODER_2, CODER_3])]
     df.to_csv(RESULTS_PATH + "/annotations/clean_annotations.csv")

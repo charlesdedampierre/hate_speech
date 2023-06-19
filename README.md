@@ -13,4 +13,5 @@ For Hate Detection, please use the package [Detoxify](https://github.com/unitary
 ```bash
 python run_get_hate_data.py 
 python run_get_agreement.py
+python run_get_performance.py
 ```
