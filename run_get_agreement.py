@@ -15,21 +15,7 @@ load_dotenv()
 RESULTS_PATH = os.getenv("RESULTS_PATH")
 
 if __name__ == "__main__":
-    df = pd.read_csv(RESULTS_PATH + "/annotations/CNCDH 2 - Annotation - data.csv")
-    df = df.fillna(0)
-    df = df.drop("text", axis=1)
-    df = df.replace("#", 0)
-    df[["antisémitisme", "islamophobie", "racisme"]] = df[
-        ["antisémitisme", "islamophobie", "racisme"]
-    ].astype(float)
-
-    df = df.replace(2, 1)
-
-    hate_type = ["antisémitisme", "islamophobie", "racisme"]
-    df["global hate"] = df[hate_type].max(axis=1)
-
-    # get the one that are done with the rtask
-    df = df[df["annotateur"].isin(["Florian", "Charles", "Benjamin"])]
+    df = pd.read_csv(RESULTS_PATH + "/annotations/clean_annotations.csv", index_col=[0])
 
     grouped = df.groupby("annotateur")["comment_id"].apply(list)
     common_ids = list(set.intersection(*map(set, grouped)))
