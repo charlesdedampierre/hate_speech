@@ -11,7 +11,12 @@ def get_table_from_report(report: dict):
     df_report = round(df_report, 2)
     df_report["precision"][df_report["index"] == "accuracy"] = ""
     df_report["recall"][df_report["index"] == "accuracy"] = ""
+    df_report["support"][df_report["index"] == "accuracy"] = df_report["support"][
+        df_report["index"] == "weighted avg"
+    ].iloc[0]
+
     df_report = df_report.set_index("index")
+    print(df_report)
 
     fig, ax = plt.subplots(figsize=(6, 3))
     ax.axis("off")
